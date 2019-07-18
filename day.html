@@ -26,6 +26,17 @@
 			<input type="text" id="result" readonly="readonly" style="margin-top:20px">
 		</div>
 		<script>
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			function setMiddle() {
+				if (isAndroid) {
+					return '-'
+				} else {
+					return '/'
+				}
+			}
+
 			function setDefaultEndDate() {
 				var date = new Date();
 				document.getElementById('endY').value = date.getFullYear()
@@ -36,14 +47,10 @@
 			function getDays(startDate, endDate) {
 				var result,
 					days;
-					alert(typeof startDate)
-					alert(typeof endDate)
 				startDate = Date.parse(startDate);
 				endDate = Date.parse(endDate);
 				result = Math.abs(endDate - startDate);
-				alert(typeof result)
 				days = Math.floor(result / (24 * 3600 * 1000));
-				alert(typeof days,days)
 				//return days
 				document.getElementById('result').value = days
 			};
@@ -51,11 +58,13 @@
 				setDefaultEndDate()
 				document.getElementById('count').onclick = function() {
 					var startTime, endTime;
-					startTime = document.getElementById('startY').value + '-' + document.getElementById('startM').value + '-' +
+					startTime = document.getElementById('startY').value + setMiddle() + document.getElementById('startM').value +
+						setMiddle() +
 						document.getElementById(
 							'startD').value;
-					endTime = document.getElementById('endY').value + '-' + document.getElementById('endM').value + '-' + document.getElementById(
-						'endD').value;
+					endTime = document.getElementById('endY').value + setMiddle() + document.getElementById('endM').value +
+						setMiddle() + document.getElementById(
+							'endD').value;
 					getDays(startTime, endTime)
 				}
 			}
