@@ -2,27 +2,28 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title></title>
 		<style>
 			input{
-				width: 28%;
+				width: 25%;
 			}
 		</style>
 	</head>
 	<body>
 		开始时间：
 		<div>
-			<input type="text" id="startY"> - <input type="text" id="startM"> - <input type="text" id="startD">
+			<input type="number" id="startY"> - <input type="number" id="startM"> - <input type="number" id="startD">
 		</div>
 		结束时间：
 		<div>
-			<input type="text" id="endY"> - <input type="text" id="endM"> - <input type="text" id="endD">
+			<input type="number" id="endY"> - <input type="number" id="endM"> - <input type="number" id="endD">
 		</div>
 		<div style="margin-top: 20px;text-align: center;">
 			<input type="button" name="" id="count" value="计算" />
 			<br>
-			<input type="text" id="result" style="margin-top:20px">
+			<input type="text" id="result" readonly="readonly" style="margin-top:20px">
 		</div>
 		<script>
 			function setDefaultEndDate() {
