@@ -36,10 +36,14 @@
 			function getDays(startDate, endDate) {
 				var result,
 					days;
+					alert(typeof startDate)
+					alert(typeof endDate)
 				startDate = Date.parse(startDate);
 				endDate = Date.parse(endDate);
 				result = Math.abs(endDate - startDate);
+				alert(typeof result)
 				days = Math.floor(result / (24 * 3600 * 1000));
+				alert(typeof days,days)
 				//return days
 				document.getElementById('result').value = days
 			};
