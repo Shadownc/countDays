@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style>
+			input{
+				width: 28%;
+			}
+		</style>
+	</head>
+	<body>
+		开始时间：
+		<div>
+			<input type="text" id="startY"> - <input type="text" id="startM"> - <input type="text" id="startD">
+		</div>
+		结束时间：
+		<div>
+			<input type="text" id="endY"> - <input type="text" id="endM"> - <input type="text" id="endD">
+		</div>
+		<div style="margin-top: 20px;text-align: center;">
+			<input type="button" name="" id="count" value="计算" />
+			<br>
+			<input type="text" id="result" style="margin-top:20px">
+		</div>
+		<script>
+			function setDefaultEndDate() {
+				var date = new Date();
+				document.getElementById('endY').value = date.getFullYear()
+				document.getElementById('endM').value = date.getMonth() + 1
+				document.getElementById('endD').value = date.getDate()
+			}
+
+			function getDays(startDate, endDate) {
+				var result,
+					days;
+				startDate = Date.parse(startDate);
+				endDate = Date.parse(endDate);
+				result = Math.abs(endDate - startDate);
+				days = Math.floor(result / (24 * 3600 * 1000));
+				//return days
+				document.getElementById('result').value = days
+			};
+			window.onload = function() {
+				setDefaultEndDate()
+				document.getElementById('count').onclick = function() {
+					var startTime, endTime;
+					startTime = document.getElementById('startY').value + '-' + document.getElementById('startM').value + '-' +
+						document.getElementById(
+							'startD').value;
+					endTime = document.getElementById('endY').value + '-' + document.getElementById('endM').value + '-' + document.getElementById(
+						'endD').value;
+					getDays(startTime, endTime)
+				}
+			}
+		</script>
+	</body>
+</html>
