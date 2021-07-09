@@ -1,2 +1,2 @@
 # countDays
-countDays --计算相隔时间
+countDays --计算相隔时间。。
